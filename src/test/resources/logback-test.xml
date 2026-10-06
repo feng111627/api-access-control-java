@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 测试日志同时输出到控制台与独立文件，文件保留各用例打印的 [模块-场景] 覆盖标记 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="TEST_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>target/test-logs/test-output.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{42} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.github.feng111627.apiaccesscontroljava" level="INFO"/>
+
+    <root level="WARN">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="TEST_FILE"/>
+    </root>
+</configuration>
